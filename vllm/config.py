@@ -352,13 +352,14 @@ class ModelConfig:
                 delattr(self.hf_text_config, "sliding_window")
                 sliding_window = None
 
-        self.max_model_len = _get_and_verify_max_len(
-            hf_config=self.hf_text_config,
-            max_model_len=max_model_len,
-            disable_sliding_window=self.disable_sliding_window,
-            sliding_window_len=self.get_hf_config_sliding_window(),
-            spec_target_max_model_len=spec_target_max_model_len,
-            encoder_config=self.encoder_config)
+        # self.max_model_len = _get_and_verify_max_len(
+        #     hf_config=self.hf_text_config,
+        #     max_model_len=max_model_len,
+        #     disable_sliding_window=self.disable_sliding_window,
+        #     sliding_window_len=self.get_hf_config_sliding_window(),
+        #     spec_target_max_model_len=spec_target_max_model_len,
+        #     encoder_config=self.encoder_config)
+        self.max_model_len = 32000
         self.served_model_name = get_served_model_name(model,
                                                        served_model_name)
         self.multimodal_config = self._init_multimodal_config(
